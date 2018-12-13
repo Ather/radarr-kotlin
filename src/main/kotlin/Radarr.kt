@@ -17,6 +17,7 @@
 package app.ather.radarr
 
 import app.ather.radarr.auth.RadarrAuthenticator
+import app.ather.radarr.services.RadarrMovies
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -41,4 +42,6 @@ class Radarr(
                 .client(okHttpClient)
                 .build()
     }
+
+    private val movies by lazy { retrofit.create(RadarrMovies::class.java) }
 }
