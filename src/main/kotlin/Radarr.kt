@@ -17,16 +17,17 @@
 package app.ather.radarr
 
 import app.ather.radarr.auth.RadarrAuthenticator
+import app.ather.radarr.services.RadarrCalendar
+import app.ather.radarr.services.RadarrDiskspace
+import app.ather.radarr.services.RadarrHistory
 import app.ather.radarr.services.RadarrMovies
 import app.ather.radarr.util.InstantAdapter
+import app.ather.radarr.util.QueryConverter
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
-import okhttp3.ResponseBody
-import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
-import java.lang.reflect.Type
 
 class Radarr(
         radarrHost: String = "localhost:7878",
@@ -42,6 +43,7 @@ class Radarr(
     private val retrofit by lazy {
         Retrofit.Builder()
                 .baseUrl(apiUrl)
+                .addConverterFactory(QueryConverter)
                 .addConverterFactory(MoshiConverterFactory.create(Moshi.Builder().add(InstantAdapter).build()))
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .client(okHttpClient)
@@ -49,4 +51,10 @@ class Radarr(
     }
 
     val movies: RadarrMovies by lazy { retrofit.create(RadarrMovies::class.java) }
+
+    val calendar: RadarrCalendar by lazy { retrofit.create(RadarrCalendar::class.java) }
+
+    val diskspace: RadarrDiskspace by lazy { retrofit.create(RadarrDiskspace::class.java) }
+
+    val history: RadarrHistory by lazy { retrofit.create(RadarrHistory::class.java) }
 }
