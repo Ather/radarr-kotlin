@@ -16,6 +16,8 @@
 
 package app.ather.radarr.model
 
+import model.AlternateTitle
+import model.MovieRatings
 import java.time.Instant
 
 data class Movie(

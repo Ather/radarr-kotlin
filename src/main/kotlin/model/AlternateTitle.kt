@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model
+package model
 
 data class AlternateTitle(
         var sourceType: String,
