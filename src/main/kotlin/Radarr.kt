@@ -18,10 +18,15 @@ package app.ather.radarr
 
 import app.ather.radarr.auth.RadarrAuthenticator
 import app.ather.radarr.services.RadarrMovies
+import app.ather.radarr.util.InstantAdapter
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
+import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
+import okhttp3.ResponseBody
+import retrofit2.Converter
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
+import java.lang.reflect.Type
 
 class Radarr(
         radarrHost: String = "localhost:7878",
@@ -37,11 +42,11 @@ class Radarr(
     private val retrofit by lazy {
         Retrofit.Builder()
                 .baseUrl(apiUrl)
-                .addConverterFactory(MoshiConverterFactory.create())
+                .addConverterFactory(MoshiConverterFactory.create(Moshi.Builder().add(InstantAdapter).build()))
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .client(okHttpClient)
                 .build()
     }
 
-    private val movies by lazy { retrofit.create(RadarrMovies::class.java) }
+    val movies: RadarrMovies by lazy { retrofit.create(RadarrMovies::class.java) }
 }

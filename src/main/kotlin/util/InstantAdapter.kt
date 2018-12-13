@@ -14,9 +14,23 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model
+package app.ather.radarr.util
 
-data class MediaCover(
-        var coverType: ImageCoverType,
-        var url: String
-)
+import com.squareup.moshi.*
+import java.time.DayOfWeek
+import java.time.Instant
+import java.time.LocalDate
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
+import java.time.format.TextStyle
+import java.util.*
+
+object InstantAdapter : JsonAdapter<Instant>() {
+    @FromJson
+    override fun fromJson(reader: JsonReader): Instant = Instant.parse(reader.nextString())
+
+    @ToJson
+    override fun toJson(writer: JsonWriter, value: Instant?) {
+        writer.value(value?.toString())
+    }
+}

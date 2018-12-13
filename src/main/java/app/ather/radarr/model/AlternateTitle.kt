@@ -16,7 +16,13 @@
 
 package app.ather.radarr.model
 
-data class MediaCover(
-        var coverType: ImageCoverType,
-        var url: String
+data class AlternateTitle(
+        var sourceType: String,
+        var movieId: Int,
+        var title: String,
+        var sourceId: Int,
+        var votes: Int,
+        var voteCount: Int,
+        var language: String,
+        var id: Int
 )

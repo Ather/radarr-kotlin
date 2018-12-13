@@ -22,7 +22,8 @@ import kotlinx.coroutines.Deferred
 import retrofit2.http.*
 
 interface RadarrMovies {
-
+    @GET("movie")
+    operator fun invoke(): Deferred<List<Movie>>
     @GET("movie")
     fun get(): Deferred<List<Movie>>
 
@@ -31,6 +32,8 @@ interface RadarrMovies {
 
     @POST("movie")
     fun insert(movie: NewMovie): Deferred<Movie>
+    @POST("movie")
+    operator fun plus(movie: NewMovie): Deferred<Movie>
 
     @PUT("movie")
     fun update(movie: Movie): Deferred<Movie>

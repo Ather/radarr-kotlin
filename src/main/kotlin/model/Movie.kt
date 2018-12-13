@@ -16,18 +16,17 @@
 
 package app.ather.radarr.model
 
-import java.net.URL
 import java.time.Instant
 
 data class Movie(
         var title: String,
         var sortTitle: String,
-        var sizeOnDisk: Int,
+        var sizeOnDisk: Long,
         var status: MovieStatus,
         var overview: String,
         var inCinemas: Instant,
         var images: List<MediaCover>,
-        var website: URL?,
+        var website: String?,
         var downloaded: Boolean,
         var year: Int,
         var hasFile: Boolean,
@@ -47,7 +46,7 @@ data class Movie(
         var tags: List<String>,
         var added: Instant,
         var ratings: MovieRatings,
-        var alternativeTitles: MutableList<String>,
+        var alternativeTitles: MutableList<AlternateTitle>,
         var qualityProfileId: Int,
         var id: Int
 )
