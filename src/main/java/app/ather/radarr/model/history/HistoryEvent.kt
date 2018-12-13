@@ -16,19 +16,19 @@
 
 package app.ather.radarr.model.history
 
-import app.ather.radarr.model.Movie
-import app.ather.radarr.model.quality.BaseQuality
-import java.time.Instant
+import com.squareup.moshi.Json
 
-data class HistoryMovie(
-        val id: Int,
-        val movieId: Int,
-        val movie: Movie,
-        val sourceTitle: String,
-        val eventType: HistoryEvent,
-        val date: Instant,
-        val downloadId: String?,
-        val qualityCutoffNotMet: Boolean,
-        val data: Map<String, String>, // TODO Consider an object here
-        val quality: BaseQuality
-)
+enum class HistoryEvent {
+    @Json(name = "unknown")
+    Unknown,
+    @Json(name = "grabbed")
+    Grabbed,
+    @Json(name = "downloadFolderImported")
+    DownloadFolderImported,
+    @Json(name = "downloadFailed")
+    DownloadFailed,
+    @Json(name = "movieFileDeleted")
+    MovieFileDeleted,
+    @Json(name = "movieFolderImported")
+    MovieFolderImported
+}

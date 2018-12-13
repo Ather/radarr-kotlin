@@ -14,21 +14,10 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model.history
+package app.ather.radarr.model.quality
 
-import app.ather.radarr.model.Movie
-import app.ather.radarr.model.quality.BaseQuality
-import java.time.Instant
-
-data class HistoryMovie(
-        val id: Int,
-        val movieId: Int,
-        val movie: Movie,
-        val sourceTitle: String,
-        val eventType: HistoryEvent,
-        val date: Instant,
-        val downloadId: String?,
-        val qualityCutoffNotMet: Boolean,
-        val data: Map<String, String>, // TODO Consider an object here
-        val quality: BaseQuality
+data class BaseQuality(
+        val customFormats: List<Any>, // TODO Create objects for this
+        val quality: Quality,
+        val revision: Revision
 )
