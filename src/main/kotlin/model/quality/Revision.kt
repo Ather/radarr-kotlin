@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model.quality
+package model.quality
 
 data class Revision(
         val real: Int,

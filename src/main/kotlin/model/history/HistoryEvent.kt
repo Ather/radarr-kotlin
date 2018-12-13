@@ -14,12 +14,21 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model.quality
+package model.history
 
-data class Quality(
-        val id: Int,
-        var modifier: String, // TODO Enum
-        var name: String,
-        var resolution: String, // TODO Enum
-        var source: String // TODO Enum
-)
+import com.squareup.moshi.Json
+
+enum class HistoryEvent {
+    @Json(name = "unknown")
+    Unknown,
+    @Json(name = "grabbed")
+    Grabbed,
+    @Json(name = "downloadFolderImported")
+    DownloadFolderImported,
+    @Json(name = "downloadFailed")
+    DownloadFailed,
+    @Json(name = "movieFileDeleted")
+    MovieFileDeleted,
+    @Json(name = "movieFolderImported")
+    MovieFolderImported
+}

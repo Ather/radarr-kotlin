@@ -18,6 +18,7 @@ package app.ather.radarr.model.history
 
 import app.ather.radarr.model.Movie
 import app.ather.radarr.model.quality.BaseQuality
+import model.history.HistoryEvent
 import java.time.Instant
 
 data class HistoryMovie(
