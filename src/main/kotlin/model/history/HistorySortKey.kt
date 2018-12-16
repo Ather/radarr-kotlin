@@ -16,8 +16,12 @@
 
 package app.ather.radarr.model.history
 
-import app.ather.radarr.model.paging.PagedResponse
-import app.ather.radarr.model.paging.SortDirection
 import app.ather.radarr.model.paging.SortKey
+import com.squareup.moshi.Json
 
-typealias HistoryResponse = PagedResponse<HistoryMovie, HistorySortKey>
+enum class HistorySortKey: SortKey {
+    @Json(name = "date")
+    Date,
+    @Json(name = "movie.title")
+    MovieTitle
+}

@@ -14,10 +14,13 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model.history
+package app.ather.radarr.model.paging
 
-import app.ather.radarr.model.paging.PagedResponse
-import app.ather.radarr.model.paging.SortDirection
-import app.ather.radarr.model.paging.SortKey
-
-typealias HistoryResponse = PagedResponse<HistoryMovie, HistorySortKey>
+data class PagedResponse<RecordType : Any, SortKeyType: SortKey>(
+        val page: Int,
+        val pageSize: Int,
+        val sortKey: SortKeyType,
+        val sortDirection: SortDirection,
+        val totalRecords: Int,
+        val records: List<RecordType>
+)

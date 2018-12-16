@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model.history
+package app.ather.radarr.model.paging
 
 import app.ather.radarr.util.Query
 import com.squareup.moshi.Json

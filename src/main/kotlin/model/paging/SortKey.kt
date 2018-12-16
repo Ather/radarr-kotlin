@@ -14,13 +14,8 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model.history
+package app.ather.radarr.model.paging
 
-import com.squareup.moshi.Json
-
-enum class SortKey {
-    @Json(name = "date")
-    Date,
-    @Json(name = "movie.title")
-    MovieTitle
+interface SortKey {
+    val name: String
 }

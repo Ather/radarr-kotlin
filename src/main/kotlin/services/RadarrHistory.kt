@@ -17,8 +17,9 @@
 package app.ather.radarr.services
 
 import app.ather.radarr.model.history.HistoryResponse
-import app.ather.radarr.model.history.SortDirection
-import app.ather.radarr.model.history.SortKey
+import app.ather.radarr.model.history.HistorySortKey
+import app.ather.radarr.model.paging.SortDirection
+import app.ather.radarr.model.paging.SortKey
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -28,7 +29,7 @@ interface RadarrHistory {
     operator fun get(
             @Query("page") page: Int,
             @Query("pageSize") pageSize: Int? = null,
-            @Query("sortKey") sortKey: SortKey? = null,
+            @Query("sortKey") sortKey: HistorySortKey? = null,
             @Query("sortDir") sortDir: SortDirection? = null
     ): Deferred<HistoryResponse>
 }
