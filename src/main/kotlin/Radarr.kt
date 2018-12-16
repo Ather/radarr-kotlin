@@ -21,8 +21,9 @@ import app.ather.radarr.services.RadarrCalendar
 import app.ather.radarr.services.RadarrDiskspace
 import app.ather.radarr.services.RadarrHistory
 import app.ather.radarr.services.RadarrMovies
-import app.ather.radarr.util.InstantAdapter
 import app.ather.radarr.util.QueryConverter
+import app.ather.radarr.util.json.DurationAdapter
+import app.ather.radarr.util.json.InstantAdapter
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import com.squareup.moshi.Moshi
 import okhttp3.OkHttpClient
@@ -44,7 +45,11 @@ class Radarr(
         Retrofit.Builder()
                 .baseUrl(apiUrl)
                 .addConverterFactory(QueryConverter)
-                .addConverterFactory(MoshiConverterFactory.create(Moshi.Builder().add(InstantAdapter).build()))
+                .addConverterFactory(MoshiConverterFactory.create(
+                        Moshi.Builder()
+                                .add(InstantAdapter)
+                                .add(DurationAdapter)
+                                .build()))
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .client(okHttpClient)
                 .build()

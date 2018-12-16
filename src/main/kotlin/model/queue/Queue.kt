@@ -14,23 +14,24 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.util
+package app.ather.radarr.model.queue
 
-import com.squareup.moshi.*
-import java.time.DayOfWeek
+import app.ather.radarr.model.Movie
+import app.ather.radarr.model.quality.Quality
+import java.time.Duration
 import java.time.Instant
-import java.time.LocalDate
-import java.time.LocalTime
-import java.time.format.DateTimeFormatter
-import java.time.format.TextStyle
-import java.util.*
 
-object InstantAdapter : JsonAdapter<Instant>() {
-    @FromJson
-    override fun fromJson(reader: JsonReader): Instant = Instant.parse(reader.nextString())
-
-    @ToJson
-    override fun toJson(writer: JsonWriter, value: Instant?) {
-        writer.value(value?.toString())
-    }
-}
+data class Queue(
+        var movie: Movie,
+        var quality: Quality,
+        var size: Long,
+        var title: String,
+        var sizeLeft: Long,
+        var timeLeft: Duration?,
+        var estimatedCompletionTime: Instant?,
+        var status: String,
+        var trackedDownloadStatus: String,
+        var statusMessages: List<TrackedDownloadStatusMessage>,
+        var downloadId: String,
+        var protocol: DownloadProtocol
+)

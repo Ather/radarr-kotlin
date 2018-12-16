@@ -14,12 +14,20 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model.quality
+package app.ather.radarr.util.json
 
-data class Quality(
-        val id: Int,
-        var modifier: Modifier,
-        var name: String,
-        var resolution: Resolution,
-        var source: Source
-)
+import com.squareup.moshi.*
+import java.time.Duration
+
+object DurationAdapter : JsonAdapter<Duration>() {
+    @FromJson
+    override fun fromJson(reader: JsonReader): Duration? {
+        val (hours, minutes, seconds) = reader.nextString().split(":").map { it.toLong() }
+        return Duration.ofSeconds(3600 * hours + 60 * minutes + seconds)
+    }
+
+    @ToJson
+    override fun toJson(writer: JsonWriter, value: Duration?) {
+        writer.value(value?.run { "${toHoursPart()}:${toMinutesPart()}:${toSecondsPart()}" })
+    }
+}

@@ -14,12 +14,15 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model.quality
+package app.ather.radarr.model.queue
 
-data class Quality(
-        val id: Int,
-        var modifier: Modifier,
-        var name: String,
-        var resolution: Resolution,
-        var source: Source
-)
+import com.squareup.moshi.Json
+
+enum class DownloadProtocol {
+    @Json(name = "unknown")
+    Unknown,
+    @Json(name = "usenet")
+    Usenet,
+    @Json(name = "torrent")
+    Torrent
+}

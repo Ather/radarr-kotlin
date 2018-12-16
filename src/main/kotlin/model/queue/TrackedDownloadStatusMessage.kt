@@ -14,12 +14,9 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model.quality
+package app.ather.radarr.model.queue
 
-data class Quality(
-        val id: Int,
-        var modifier: Modifier,
-        var name: String,
-        var resolution: Resolution,
-        var source: Source
+data class TrackedDownloadStatusMessage(
+        var title: String,
+        var messages: List<String>
 )

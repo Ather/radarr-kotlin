@@ -14,12 +14,23 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model.quality
+package app.ather.radarr.util.json
 
-data class Quality(
-        val id: Int,
-        var modifier: Modifier,
-        var name: String,
-        var resolution: Resolution,
-        var source: Source
-)
+import com.squareup.moshi.*
+import java.time.DayOfWeek
+import java.time.Instant
+import java.time.LocalDate
+import java.time.LocalTime
+import java.time.format.DateTimeFormatter
+import java.time.format.TextStyle
+import java.util.*
+
+object InstantAdapter : JsonAdapter<Instant>() {
+    @FromJson
+    override fun fromJson(reader: JsonReader): Instant = Instant.parse(reader.nextString())
+
+    @ToJson
+    override fun toJson(writer: JsonWriter, value: Instant?) {
+        writer.value(value?.toString())
+    }
+}

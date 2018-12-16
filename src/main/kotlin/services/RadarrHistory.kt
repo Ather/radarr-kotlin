@@ -30,6 +30,7 @@ interface RadarrHistory {
             @Query("page") page: Int,
             @Query("pageSize") pageSize: Int? = null,
             @Query("sortKey") sortKey: HistorySortKey? = null,
-            @Query("sortDir") sortDir: SortDirection? = null
+            @Query("sortDir") sortDir: SortDirection? = null,
+            @Query("movieId") movieId: Int? = null
     ): Deferred<HistoryResponse>
 }
