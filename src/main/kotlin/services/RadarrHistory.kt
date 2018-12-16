@@ -21,6 +21,7 @@ import app.ather.radarr.model.history.HistorySortKey
 import app.ather.radarr.model.paging.SortDirection
 import app.ather.radarr.model.paging.SortKey
 import kotlinx.coroutines.Deferred
+import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
@@ -32,5 +33,5 @@ interface RadarrHistory {
             @Query("sortKey") sortKey: HistorySortKey? = null,
             @Query("sortDir") sortDir: SortDirection? = null,
             @Query("movieId") movieId: Int? = null
-    ): Deferred<HistoryResponse>
+    ): Call<HistoryResponse>
 }

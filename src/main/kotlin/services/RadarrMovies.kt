@@ -19,25 +19,26 @@ package app.ather.radarr.services
 import app.ather.radarr.model.Movie
 import app.ather.radarr.model.NewMovie
 import kotlinx.coroutines.Deferred
+import retrofit2.Call
 import retrofit2.http.*
 
 interface RadarrMovies {
     @GET("movie")
-    operator fun invoke(): Deferred<List<Movie>>
+    operator fun invoke(): Call<List<Movie>>
     @GET("movie")
-    fun get(): Deferred<List<Movie>>
+    fun get(): Call<List<Movie>>
 
     @GET("movie/{id}")
-    operator fun get(@Path("id") id: Int): Deferred<Movie>
+    operator fun get(@Path("id") id: Int): Call<Movie>
 
     @POST("movie")
-    fun insert(movie: NewMovie): Deferred<Movie>
+    fun insert(movie: NewMovie): Call<Movie>
     @POST("movie")
-    operator fun plus(movie: NewMovie): Deferred<Movie>
+    operator fun plus(movie: NewMovie): Call<Movie>
 
     @PUT("movie")
-    fun update(movie: Movie): Deferred<Movie>
+    fun update(movie: Movie): Call<Movie>
 
     @DELETE("movie/{id}")
-    fun delete(@Path("id") id: Int, @Query("deleteFiles") deleteFiles: Boolean = false): Deferred<Unit>
+    fun delete(@Path("id") id: Int, @Query("deleteFiles") deleteFiles: Boolean = false): Call<Unit>
 }

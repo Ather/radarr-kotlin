@@ -18,11 +18,12 @@ package app.ather.radarr.services
 
 import app.ather.radarr.model.diskspace.DiskSpace
 import kotlinx.coroutines.Deferred
+import retrofit2.Call
 import retrofit2.http.GET
 
 interface RadarrDiskspace {
     @GET("diskspace")
-    operator fun invoke(): Deferred<List<DiskSpace>>
+    operator fun invoke(): Call<List<DiskSpace>>
     @GET("diskspace")
-    fun get(): Deferred<List<DiskSpace>>
+    fun get(): Call<List<DiskSpace>>
 }
