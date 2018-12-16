@@ -28,6 +28,14 @@ object DurationAdapter : JsonAdapter<Duration>() {
 
     @ToJson
     override fun toJson(writer: JsonWriter, value: Duration?) {
-        writer.value(value?.run { "${toHoursPart()}:${toMinutesPart()}:${toSecondsPart()}" })
+        writer.value(value?.run(this::toHMS))
     }
+
+
+    private fun toHMS(duration: Duration) = duration.run {
+        "${toHours().toPaddedDuration()}:" +
+                "${toMinutesPart().toPaddedDuration()}:" +
+                toSecondsPart().toPaddedDuration()
+    }
+    private fun Number.toPaddedDuration() = toString().padStart(2, '0')
 }
