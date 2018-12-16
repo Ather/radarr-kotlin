@@ -17,10 +17,7 @@
 package app.ather.radarr
 
 import app.ather.radarr.auth.RadarrAuthenticator
-import app.ather.radarr.services.RadarrCalendar
-import app.ather.radarr.services.RadarrDiskspace
-import app.ather.radarr.services.RadarrHistory
-import app.ather.radarr.services.RadarrMovies
+import app.ather.radarr.services.*
 import app.ather.radarr.util.QueryConverter
 import app.ather.radarr.util.json.DurationAdapter
 import app.ather.radarr.util.json.InstantAdapter
@@ -62,4 +59,6 @@ class Radarr(
     val diskspace: RadarrDiskspace by lazy { retrofit.create(RadarrDiskspace::class.java) }
 
     val history: RadarrHistory by lazy { retrofit.create(RadarrHistory::class.java) }
+
+    val queue: RadarrQueue by lazy { retrofit.create(RadarrQueue::class.java) }
 }

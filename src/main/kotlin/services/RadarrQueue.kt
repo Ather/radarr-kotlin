@@ -14,10 +14,19 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model.quality
+package app.ather.radarr.services
 
-data class BaseQuality(
-        val customFormats: List<Any> = emptyList(), // TODO Create objects for this
-        val quality: Quality,
-        val revision: Revision
-)
+import app.ather.radarr.model.paging.SortDirection
+import app.ather.radarr.model.queue.QueueItem
+import app.ather.radarr.model.queue.QueueSortKey
+import kotlinx.coroutines.Deferred
+import retrofit2.http.GET
+import retrofit2.http.Query
+
+interface RadarrQueue {
+    @GET("queue")
+    operator fun invoke(
+            @Query("sort_by") sortKey: QueueSortKey = QueueSortKey.Time,
+            @Query("order") sortDir: SortDirection = SortDirection.Ascending
+    ): Deferred<List<QueueItem>>
+}

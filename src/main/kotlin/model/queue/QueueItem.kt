@@ -17,13 +17,13 @@
 package app.ather.radarr.model.queue
 
 import app.ather.radarr.model.Movie
-import app.ather.radarr.model.quality.Quality
+import app.ather.radarr.model.quality.BaseQuality
 import java.time.Duration
 import java.time.Instant
 
-data class Queue(
+data class QueueItem(
         var movie: Movie,
-        var quality: Quality,
+        var quality: BaseQuality,
         var size: Long,
         var title: String,
         var sizeLeft: Long,

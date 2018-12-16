@@ -14,10 +14,14 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model.quality
+package app.ather.radarr.model.queue
 
-data class BaseQuality(
-        val customFormats: List<Any> = emptyList(), // TODO Create objects for this
-        val quality: Quality,
-        val revision: Revision
-)
+import app.ather.radarr.model.paging.SortKey
+import com.squareup.moshi.Json
+
+enum class QueueSortKey : SortKey {
+    @Json(name = "timeleft")
+    Time,
+    @Json(name = "sizeleft")
+    Size
+}
