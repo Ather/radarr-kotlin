@@ -14,19 +14,16 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model.movie
+package app.ather.radarr.model.commands
 
-import com.squareup.moshi.Json
+import app.ather.radarr.model.commands.base.BaseNewCommand
+import app.ather.radarr.model.commands.enums.CommandName
+import app.ather.radarr.model.commands.enums.DownloadImportMode
 
-enum class MovieStatus {
-    @Json(name = "tba")
-    TBA,
-    @Json(name = "announced")
-    Announced,
-    @Json(name = "inCinemas")
-    InCinemas,
-    @Json(name = "released")
-    Released,
-    @Json(name = "preDB")
-    PreDB
+data class DownloadedMoviesScan(
+        val path: String? = null,
+        val downloadClientId: String? = null,
+        val importMode: DownloadImportMode? = null
+): BaseNewCommand {
+    override val name: CommandName = CommandName.DownloadedMoviesScan
 }

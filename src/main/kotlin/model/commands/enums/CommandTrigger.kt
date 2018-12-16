@@ -14,19 +14,15 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model.movie
+package app.ather.radarr.model.commands.enums
 
 import com.squareup.moshi.Json
 
-enum class MovieStatus {
-    @Json(name = "tba")
-    TBA,
-    @Json(name = "announced")
-    Announced,
-    @Json(name = "inCinemas")
-    InCinemas,
-    @Json(name = "released")
-    Released,
-    @Json(name = "preDB")
-    PreDB
+enum class CommandTrigger {
+    @Json(name = "unspecified")
+    Unspecified,
+    @Json(name = "manual")
+    Manual,
+    @Json(name = "scheduled")
+    Scheduled
 }

@@ -61,4 +61,6 @@ class Radarr(
     val history: RadarrHistory by lazy { retrofit.create(RadarrHistory::class.java) }
 
     val queue: RadarrQueue by lazy { retrofit.create(RadarrQueue::class.java) }
+
+    val commands: RadarrCommands by lazy { retrofit.create(RadarrCommands::class.java) }
 }

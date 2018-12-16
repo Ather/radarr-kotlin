@@ -14,19 +14,10 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model.movie
+package app.ather.radarr.model.commands.base
 
-import com.squareup.moshi.Json
+import app.ather.radarr.model.commands.enums.CommandName
 
-enum class MovieStatus {
-    @Json(name = "tba")
-    TBA,
-    @Json(name = "announced")
-    Announced,
-    @Json(name = "inCinemas")
-    InCinemas,
-    @Json(name = "released")
-    Released,
-    @Json(name = "preDB")
-    PreDB
+interface BaseNewCommand {
+    val name: CommandName
 }

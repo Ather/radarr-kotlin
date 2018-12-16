@@ -14,19 +14,17 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model.movie
+package app.ather.radarr.model.commands.base
 
-import com.squareup.moshi.Json
+import app.ather.radarr.model.commands.enums.CommandName
+import app.ather.radarr.model.commands.enums.CommandState
+import java.time.Instant
 
-enum class MovieStatus {
-    @Json(name = "tba")
-    TBA,
-    @Json(name = "announced")
-    Announced,
-    @Json(name = "inCinemas")
-    InCinemas,
-    @Json(name = "released")
-    Released,
-    @Json(name = "preDB")
-    PreDB
-}
+data class Command(
+        var stateChangeTime: Instant,
+        override var name: CommandName,
+        override var startedOn: Instant,
+        override var sendUpdatesToClient: Boolean,
+        override var state: CommandState,
+        override var id: Int
+): BaseCommand

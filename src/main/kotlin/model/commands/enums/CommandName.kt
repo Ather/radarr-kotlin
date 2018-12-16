@@ -14,19 +14,29 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model.movie
+package app.ather.radarr.model.commands.enums
 
 import com.squareup.moshi.Json
 
-enum class MovieStatus {
-    @Json(name = "tba")
-    TBA,
-    @Json(name = "announced")
-    Announced,
-    @Json(name = "inCinemas")
-    InCinemas,
-    @Json(name = "released")
-    Released,
-    @Json(name = "preDB")
-    PreDB
+enum class CommandName {
+    @Json(name = "refreshMovie")
+    RefreshMovie,
+    @Json(name = "rescanMovie")
+    RescanMovie,
+    @Json(name = "moviesSearch")
+    MoviesSearch,
+    @Json(name = "downloadedMoviesScan")
+    DownloadedMoviesScan,
+    @Json(name = "rssSync")
+    RssSync,
+    @Json(name = "renameFiles")
+    RenameFiles,
+    @Json(name = "renameMovies")
+    RenameMovies,
+    @Json(name = "cutOffUnmetMoviesSearch")
+    CutOffUnmetMoviesSearch,
+    @Json(name = "netImportSync")
+    NetImportSync,
+    @Json(name = "missingMoviesSearch")
+    MissingMoviesSearch
 }
