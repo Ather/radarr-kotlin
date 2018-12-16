@@ -14,16 +14,18 @@
  * limitations under the License.
  */
 
-package model.quality
+package app.ather.radarr.model.quality
 
-import app.ather.radarr.model.quality.Modifier
-import app.ather.radarr.model.quality.Resolution
-import app.ather.radarr.model.quality.Source
+import com.squareup.moshi.Json
 
-data class Quality(
-        val id: Int,
-        var modifier: Modifier,
-        var name: String,
-        var resolution: Resolution,
-        var source: Source
-)
+enum class Source {
+    @Json(name = "unknown") Unknown,
+    @Json(name = "cam") Cam,
+    @Json(name = "telesync") Telesync,
+    @Json(name = "telecine") Telecine,
+    @Json(name = "workprint") Workprint,
+    @Json(name = "dvd") DVD,
+    @Json(name = "tv") TV,
+    @Json(name = "webdl") WebDL,
+    @Json(name = "bluray") Bluray
+}

@@ -20,7 +20,7 @@ import model.quality.Quality
 import model.quality.Revision
 
 data class BaseQuality(
-        val customFormats: List<Any>, // TODO Create objects for this
+        val customFormats: List<Any> = emptyList(), // TODO Create objects for this
         val quality: Quality,
         val revision: Revision
 )
