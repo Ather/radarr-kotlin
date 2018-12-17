@@ -14,17 +14,9 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model.commands.enums
+package app.ather.radarr.util
 
-enum class CommandName {
-    RefreshMovie,
-    RescanMovie,
-    MoviesSearch,
-    DownloadedMoviesScan,
-    RssSync,
-    RenameFiles,
-    RenameMovies,
-    CutOffUnmetMoviesSearch,
-    NetImportSync,
-    MissingMoviesSearch
-}
+import retrofit2.Call
+import retrofit2.Response
+
+operator fun <T> Call<T>.invoke(): Response<T> = execute()

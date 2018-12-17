@@ -16,9 +16,10 @@
 
 package app.ather.radarr.services
 
-import app.ather.radarr.model.commands.NewCommandResponse
-import app.ather.radarr.model.commands.base.BaseNewCommand
+import app.ather.radarr.model.commands.*
 import app.ather.radarr.model.commands.base.Command
+import app.ather.radarr.model.commands.enums.DownloadImportMode
+import app.ather.radarr.model.commands.params.FilterMovieStatus
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.GET
@@ -28,6 +29,7 @@ import retrofit2.http.Path
 interface RadarrCommands {
     @GET("command")
     operator fun invoke(): Call<List<Command>>
+
     @GET("command")
     fun get(): Call<List<Command>>
 
@@ -35,7 +37,50 @@ interface RadarrCommands {
     operator fun get(@Path("id") id: Int): Call<Command>
 
     @POST("command")
-    fun <T : BaseNewCommand> insert(command: T): Call<NewCommandResponse<T>>
+    fun refreshMovie(@Body refreshMovie: RefreshMovie): Call<NewCommandResponse<RefreshMovie>>
+
     @POST("command")
-    operator fun <T : BaseNewCommand> plus(command: T): Call<NewCommandResponse<T>>
+    fun rescanMovie(@Body rescanMovie: RescanMovie): Call<NewCommandResponse<RescanMovie>>
+
+    @POST("command")
+    fun moviesSearch(@Body moviesSearch: MoviesSearch): Call<NewCommandResponse<MoviesSearch>>
+
+    @POST("command")
+    fun downloadedMoviesScan(@Body downloadedMoviesScan: DownloadedMoviesScan): Call<NewCommandResponse<DownloadedMoviesScan>>
+
+    @POST("command")
+    fun rssSync(@Body rssSync: RssSync): Call<NewCommandResponse<RssSync>>
+
+    @POST("command")
+    fun renameFiles(@Body renameFiles: RenameFiles): Call<NewCommandResponse<RenameFiles>>
+
+    @POST("command")
+    fun renameMovies(@Body renameMovies: RenameMovies): Call<NewCommandResponse<RenameMovies>>
+
+    @POST("command")
+    fun cutOffUnmetMoviesSearch(@Body cutOffUnmetMoviesSearch: CutOffUnmetMoviesSearch): Call<NewCommandResponse<CutOffUnmetMoviesSearch>>
+
+    @POST("command")
+    fun netImportSync(@Body netImportSync: NetImportSync): Call<NewCommandResponse<NetImportSync>>
+
+    @POST("command")
+    fun missingMoviesSearch(@Body missingMoviesSearch: MissingMoviesSearch): Call<NewCommandResponse<MissingMoviesSearch>>
 }
+
+fun RadarrCommands.refreshMovie(movieId: Int? = null) = refreshMovie(RefreshMovie(movieId))
+fun RadarrCommands.rescanMovie(movieId: Int? = null) = rescanMovie(RescanMovie(movieId))
+fun RadarrCommands.moviesSearch(vararg movieIds: Int) = moviesSearch(MoviesSearch(movieIds.asList()))
+fun RadarrCommands.downloadedMoviesScan(path: String? = null, downloadClientId: String? = null, importMode: DownloadImportMode? = null) = downloadedMoviesScan(DownloadedMoviesScan(path, downloadClientId, importMode))
+fun RadarrCommands.rssSync() = rssSync(RssSync())
+fun RadarrCommands.renameFiles(vararg fileIds: Int) = renameFiles(RenameFiles(fileIds.asList()))
+fun RadarrCommands.renameMovies(vararg movieIds: Int) = renameMovies(RenameMovies(movieIds.asList()))
+
+fun RadarrCommands.cutOffUnmetMoviesSearchMonitored(monitored: Boolean = true) = cutOffUnmetMoviesSearch(CutOffUnmetMoviesSearch.filterMonitored(monitored))
+fun RadarrCommands.cutOffUnmetMoviesSearchAll() = cutOffUnmetMoviesSearch(CutOffUnmetMoviesSearch.filterAll())
+fun RadarrCommands.cutOffUnmetMoviesSearchStatus(status: FilterMovieStatus) = cutOffUnmetMoviesSearch(CutOffUnmetMoviesSearch.filterStatus(status))
+
+fun RadarrCommands.netImportSync() = netImportSync(NetImportSync())
+
+fun RadarrCommands.missingMoviesSearchMonitored(monitored: Boolean = true) = missingMoviesSearch(MissingMoviesSearch.filterMonitored(monitored))
+fun RadarrCommands.missingMoviesSearchAll() = missingMoviesSearch(MissingMoviesSearch.filterAll())
+fun RadarrCommands.missingMoviesSearchStatus(status: FilterMovieStatus) = missingMoviesSearch(MissingMoviesSearch.filterStatus(status))
