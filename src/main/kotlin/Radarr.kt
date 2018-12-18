@@ -54,6 +54,8 @@ class Radarr(
 
     val movies: RadarrMovies by lazy { retrofit.create(RadarrMovies::class.java) }
 
+    val lookup: RadarrLookup by lazy { retrofit.create(RadarrLookup::class.java) }
+
     val calendar: RadarrCalendar by lazy { retrofit.create(RadarrCalendar::class.java) }
 
     val diskspace: RadarrDiskspace by lazy { retrofit.create(RadarrDiskspace::class.java) }
