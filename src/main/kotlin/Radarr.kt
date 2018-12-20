@@ -27,6 +27,7 @@ import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
+
 class Radarr(
         radarrHost: String = "localhost:7878",
         internal val apiKey: String,
@@ -35,7 +36,7 @@ class Radarr(
     private val apiUrl = "${if (useSsl) "https://" else "http://"}$radarrHost/api/"
 
     private val okHttpClient by lazy {
-        OkHttpClient.Builder().authenticator(RadarrAuthenticator(this)).build()
+        OkHttpClient.Builder().addInterceptor(RadarrAuthenticator(this)).build()
     }
 
     private val retrofit by lazy {

@@ -17,16 +17,13 @@
 package app.ather.radarr.auth
 
 import app.ather.radarr.Radarr
-import okhttp3.Authenticator
-import okhttp3.Request
-import okhttp3.Response
-import okhttp3.Route
+import okhttp3.*
 
 internal class RadarrAuthenticator(
         private val client: Radarr
-) : Authenticator {
-    override fun authenticate(route: Route?, response: Response): Request? =
-            response.request().newBuilder().addHeader(API_KEY_HEADER, client.apiKey).build()
+) : Interceptor {
+    override fun intercept(chain: Interceptor.Chain): Response =
+            chain.proceed(chain.request().newBuilder().addHeader(API_KEY_HEADER, client.apiKey).build())
 
     companion object {
         const val API_KEY_HEADER = "X-Api-Key"
