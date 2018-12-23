@@ -28,9 +28,6 @@ import retrofit2.http.Path
 
 interface RadarrCommands {
     @GET("command")
-    operator fun invoke(): Call<List<Command>>
-
-    @GET("command")
     fun get(): Call<List<Command>>
 
     @GET("command/{id}")

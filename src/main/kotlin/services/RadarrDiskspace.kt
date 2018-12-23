@@ -23,7 +23,5 @@ import retrofit2.http.GET
 
 interface RadarrDiskspace {
     @GET("diskspace")
-    operator fun invoke(): Call<List<DiskSpace>>
-    @GET("diskspace")
     fun get(): Call<List<DiskSpace>>
 }

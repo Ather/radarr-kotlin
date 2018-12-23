@@ -24,8 +24,6 @@ import retrofit2.http.*
 
 interface RadarrMovies {
     @GET("movie")
-    operator fun invoke(): Call<List<Movie>>
-    @GET("movie")
     fun get(): Call<List<Movie>>
 
     @GET("movie/{id}")
@@ -33,8 +31,6 @@ interface RadarrMovies {
 
     @POST("movie")
     fun insert(movie: NewMovie): Call<Movie>
-    @POST("movie")
-    operator fun plus(movie: NewMovie): Call<Movie>
 
     @PUT("movie")
     fun update(movie: Movie): Call<Movie>
