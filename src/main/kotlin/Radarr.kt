@@ -70,4 +70,6 @@ class Radarr(
     val commands: RadarrCommands by lazy { retrofit.create(RadarrCommands::class.java) }
 
     val system: RadarrSystem by lazy { retrofit.create(RadarrSystem::class.java) }
+
+    val config: RadarrConfig by lazy { retrofit.create(RadarrConfig::class.java) }
 }
