@@ -1,6 +1,4 @@
-package model.config.mediamanagement
-
-import app.ather.radarr.model.config.management.FileDateType
+package app.ather.radarr.model.config.mediamanagement
 
 data class MediaManagementConfig(
         var autoUnmonitorPreviouslyDownloadedEpisodes: Boolean,

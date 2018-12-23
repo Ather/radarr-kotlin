@@ -1,6 +1,4 @@
-package model.config.netimport
-
-import app.ather.radarr.model.config.netimport.CleanLibraryLevel
+package app.ather.radarr.model.config.netimport
 
 data class NetImportConfig(
         var netImportSyncInterval: Int,

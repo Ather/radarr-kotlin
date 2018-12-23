@@ -1,6 +1,4 @@
-package model.config.naming
-
-import app.ather.radarr.model.config.naming.ColonReplacementFormat
+package app.ather.radarr.model.config.naming
 
 data class NamingConfig(
         var renameEpisodes: Boolean,

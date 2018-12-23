@@ -1,4 +1,4 @@
-package model.config.host
+package app.ather.radarr.model.config.host
 
 import app.ather.radarr.model.authentication.AuthenticationType
 

@@ -1,4 +1,4 @@
-package model.config.host
+package app.ather.radarr.model.config.host
 
 import com.squareup.moshi.Json
 

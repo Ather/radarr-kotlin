@@ -1,4 +1,4 @@
-package app.ather.radarr.model.config.management
+package app.ather.radarr.model.config.mediamanagement
 
 import com.squareup.moshi.Json
 
