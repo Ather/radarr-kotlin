@@ -19,6 +19,7 @@ package app.ather.radarr
 import app.ather.radarr.auth.RadarrAuthenticator
 import app.ather.radarr.services.*
 import app.ather.radarr.util.QueryConverter
+import app.ather.radarr.util.json.DayOfWeekAdapter
 import app.ather.radarr.util.json.DurationAdapter
 import app.ather.radarr.util.json.InstantAdapter
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -47,6 +48,7 @@ class Radarr(
                         Moshi.Builder()
                                 .add(InstantAdapter)
                                 .add(DurationAdapter)
+                                .add(DayOfWeekAdapter)
                                 .build()))
                 .addCallAdapterFactory(CoroutineCallAdapterFactory())
                 .client(okHttpClient)
@@ -66,4 +68,6 @@ class Radarr(
     val queue: RadarrQueue by lazy { retrofit.create(RadarrQueue::class.java) }
 
     val commands: RadarrCommands by lazy { retrofit.create(RadarrCommands::class.java) }
+
+    val system: RadarrSystem by lazy { retrofit.create(RadarrSystem::class.java) }
 }
