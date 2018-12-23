@@ -22,8 +22,8 @@ import retrofit2.Call
 import retrofit2.http.*
 
 interface RadarrMovies {
-    @GET("movie")
-    fun get(): Call<List<Movie>>
+    @get:GET("movie")
+    val all: Call<List<Movie>>
 
     @GET("movie/{id}")
     operator fun get(@Path("id") id: Int): Call<Movie>

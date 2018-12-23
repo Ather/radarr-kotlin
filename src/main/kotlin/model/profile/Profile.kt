@@ -14,22 +14,17 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.services
+package app.ather.radarr.model.profile
 
-import app.ather.radarr.model.paging.SortDirection
-import app.ather.radarr.model.queue.QueueItem
-import app.ather.radarr.model.queue.QueueSortKey
-import retrofit2.Call
-import retrofit2.http.GET
-import retrofit2.http.Query
+import app.ather.radarr.model.language.Language
+import app.ather.radarr.model.quality.Quality
 
-interface RadarrQueue {
-    @GET("queue")
-    operator fun get(
-            @Query("sort_by") sortKey: QueueSortKey = QueueSortKey.Time,
-            @Query("order") sortDir: SortDirection = SortDirection.Ascending
-    ): Call<List<QueueItem>>
-}
-
-val RadarrQueue.all: Call<List<QueueItem>>
-    get() = get()
+data class Profile(
+        var name: String,
+        var cutoff: Quality,
+        var preferredTags: String,
+        var items: List<ProfileQualityItem>,
+        var formatCutoff: CustomFormat,
+        var formatItems: List<ProfileFormatItem>,
+        var language: Language
+)

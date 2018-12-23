@@ -16,20 +16,11 @@
 
 package app.ather.radarr.services
 
-import app.ather.radarr.model.paging.SortDirection
-import app.ather.radarr.model.queue.QueueItem
-import app.ather.radarr.model.queue.QueueSortKey
+import app.ather.radarr.model.profile.Profile
 import retrofit2.Call
 import retrofit2.http.GET
-import retrofit2.http.Query
 
-interface RadarrQueue {
-    @GET("queue")
-    operator fun get(
-            @Query("sort_by") sortKey: QueueSortKey = QueueSortKey.Time,
-            @Query("order") sortDir: SortDirection = SortDirection.Ascending
-    ): Call<List<QueueItem>>
+interface RadarrProfile {
+    @get:GET("profile")
+    val all: Call<List<Profile>>
 }
-
-val RadarrQueue.all: Call<List<QueueItem>>
-    get() = get()

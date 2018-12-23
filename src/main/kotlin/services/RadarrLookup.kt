@@ -31,3 +31,21 @@ interface RadarrLookup {
     @GET("movie/lookup/imdb")
     fun imdb(@Query("imdbId") imdbId: String): Call<List<Movie>>
 }
+
+operator fun RadarrLookup.get(term: String) = term(term)
+
+enum class LookupKey {
+    Term,
+    TMDb,
+    IMDb
+}
+
+operator fun RadarrLookup.get(key: LookupKey, term: String) = when (key) {
+    LookupKey.Term -> term(term)
+    LookupKey.TMDb -> tmdb(term.toInt())
+    LookupKey.IMDb -> imdb(term)
+}
+operator fun RadarrLookup.get(key: LookupKey, id: Int) = when (key) {
+    LookupKey.TMDb -> tmdb(id)
+    else -> term(id.toString())
+}

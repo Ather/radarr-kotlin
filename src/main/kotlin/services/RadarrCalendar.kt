@@ -17,13 +17,16 @@
 package app.ather.radarr.services
 
 import app.ather.radarr.model.movie.Movie
+import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query
 
 interface RadarrCalendar {
     @GET("calendar")
     operator fun get(
-            @Query("start") start: Long?,
-            @Query("end") end: Long?
-    ): List<Movie>
+            @Query("start") start: Long? = null,
+            @Query("end") end: Long? = null
+    ): Call<List<Movie>>
 }
+
+operator fun RadarrCalendar.get(range: LongRange): Call<List<Movie>> = get(range.start, range.endInclusive)
