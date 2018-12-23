@@ -17,6 +17,7 @@
 package app.ather.radarr.services
 
 import app.ather.radarr.model.commands.*
+import app.ather.radarr.model.commands.base.BaseNewCommand
 import app.ather.radarr.model.commands.base.Command
 import app.ather.radarr.model.commands.enums.DownloadImportMode
 import app.ather.radarr.model.commands.params.FilterMovieStatus
@@ -32,6 +33,9 @@ interface RadarrCommands {
 
     @GET("command/{id}")
     operator fun get(@Path("id") id: Int): Call<Command>
+
+    @POST("command")
+    fun create(@Body command: BaseNewCommand): Call<NewCommandResponse<BaseNewCommand>>
 
     @POST("command")
     fun refreshMovie(@Body refreshMovie: RefreshMovie): Call<NewCommandResponse<RefreshMovie>>

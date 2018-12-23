@@ -30,7 +30,7 @@ interface RadarrMovies {
     operator fun get(@Path("id") id: Int): Call<Movie>
 
     @POST("movie")
-    fun insert(movie: NewMovie): Call<Movie>
+    fun create(movie: NewMovie): Call<Movie>
 
     @PUT("movie")
     fun update(movie: Movie): Call<Movie>
