@@ -18,9 +18,18 @@ package app.ather.radarr.services
 
 import app.ather.radarr.model.profile.Profile
 import retrofit2.Call
-import retrofit2.http.GET
+import retrofit2.http.*
 
 interface RadarrProfile {
     @get:GET("profile")
     val all: Call<List<Profile>>
+
+    @POST("profile")
+    fun create(@Body profile: Profile): Call<Profile>
+
+    @PUT("profile/{id}")
+    fun update(@Path("id") id: Int, @Body profile: Profile): Call<Profile>
+
+    @DELETE("profile/{id}")
+    fun delete(@Path("id") id: Int): Call<Unit>
 }

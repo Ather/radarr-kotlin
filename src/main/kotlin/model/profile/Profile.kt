@@ -26,5 +26,6 @@ data class Profile(
         var items: List<ProfileQualityItem>,
         var formatCutoff: CustomFormat,
         var formatItems: List<ProfileFormatItem>,
-        var language: Language
+        var language: Language,
+        var id: Int? = null
 )
