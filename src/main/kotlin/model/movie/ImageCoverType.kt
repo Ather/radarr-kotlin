@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model
+package app.ather.radarr.model.movie
 
 import com.squareup.moshi.Json
 

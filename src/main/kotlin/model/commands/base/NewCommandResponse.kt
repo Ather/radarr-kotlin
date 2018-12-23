@@ -14,10 +14,8 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model.commands
+package app.ather.radarr.model.commands.base
 
-import app.ather.radarr.model.commands.base.BaseCommand
-import app.ather.radarr.model.commands.base.BaseNewCommand
 import app.ather.radarr.model.commands.enums.CommandName
 import app.ather.radarr.model.commands.enums.CommandPriority
 import app.ather.radarr.model.commands.enums.CommandState

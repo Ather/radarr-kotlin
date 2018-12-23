@@ -16,7 +16,7 @@
 
 package app.ather.radarr.services
 
-import app.ather.radarr.model.Movie
+import app.ather.radarr.model.movie.Movie
 import retrofit2.http.GET
 import retrofit2.http.Query
 

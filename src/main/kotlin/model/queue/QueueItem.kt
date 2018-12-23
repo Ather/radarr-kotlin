@@ -16,7 +16,7 @@
 
 package app.ather.radarr.model.queue
 
-import app.ather.radarr.model.Movie
+import app.ather.radarr.model.movie.Movie
 import app.ather.radarr.model.quality.BaseQuality
 import java.time.Duration
 import java.time.Instant

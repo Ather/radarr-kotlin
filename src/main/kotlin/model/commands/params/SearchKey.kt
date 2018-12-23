@@ -20,12 +20,9 @@ import com.squareup.moshi.Json
 
 enum class SearchKey {
     @Json(name = "monitored")
-    Monitored {
-
-    },
+    Monitored,
     @Json(name = "all")
-    All {
-    },
+    All,
     @Json(name = "status")
     Status
 }

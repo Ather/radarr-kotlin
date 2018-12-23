@@ -16,9 +16,8 @@
 
 package app.ather.radarr.services
 
-import app.ather.radarr.model.Movie
-import app.ather.radarr.model.NewMovie
-import kotlinx.coroutines.Deferred
+import app.ather.radarr.model.movie.Movie
+import app.ather.radarr.model.movie.NewMovie
 import retrofit2.Call
 import retrofit2.http.*
 

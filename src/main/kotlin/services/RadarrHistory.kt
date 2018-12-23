@@ -19,8 +19,6 @@ package app.ather.radarr.services
 import app.ather.radarr.model.history.HistoryResponse
 import app.ather.radarr.model.history.HistorySortKey
 import app.ather.radarr.model.paging.SortDirection
-import app.ather.radarr.model.paging.SortKey
-import kotlinx.coroutines.Deferred
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Query

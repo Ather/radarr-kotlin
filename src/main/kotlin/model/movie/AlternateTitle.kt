@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package model
+package app.ather.radarr.model.movie
 
 data class AlternateTitle(
         var sourceType: String,

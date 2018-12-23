@@ -14,11 +14,8 @@
  * limitations under the License.
  */
 
-package app.ather.radarr.model
+package app.ather.radarr.model.movie
 
-import app.ather.radarr.model.movie.MovieStatus
-import model.AlternateTitle
-import model.MovieRatings
 import java.time.Instant
 
 data class Movie(

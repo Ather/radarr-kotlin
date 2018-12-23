@@ -19,6 +19,7 @@ package app.ather.radarr.services
 import app.ather.radarr.model.commands.*
 import app.ather.radarr.model.commands.base.BaseNewCommand
 import app.ather.radarr.model.commands.base.Command
+import app.ather.radarr.model.commands.base.NewCommandResponse
 import app.ather.radarr.model.commands.enums.DownloadImportMode
 import app.ather.radarr.model.commands.params.FilterMovieStatus
 import retrofit2.Call

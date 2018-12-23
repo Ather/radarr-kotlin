@@ -17,7 +17,6 @@
 package app.ather.radarr.services
 
 import app.ather.radarr.model.diskspace.DiskSpace
-import kotlinx.coroutines.Deferred
 import retrofit2.Call
 import retrofit2.http.GET
 

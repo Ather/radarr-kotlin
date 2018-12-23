@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package model.history
+package app.ather.radarr.model.history
 
 import com.squareup.moshi.Json
 
