@@ -35,6 +35,7 @@ data class Movie(
         var path: String,
         var profileId: Int,
         var monitored: Boolean,
+        val movieFile: MovieFile?,
         var minimumAvailability: MovieStatus,
         var runtime: Int,
         var lastInfoSync: Instant,
